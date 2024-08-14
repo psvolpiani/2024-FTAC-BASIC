@@ -1,0 +1,47 @@
+# ===================
+# Fisrt configuration
+# ===================
+tgv:
+    casename: tgv
+    nequations: 5
+    mpi:
+        ndomains: [2,1,1]
+    mesh:
+        nx: 64
+        ny: 64
+        nz: 64
+        xmin_xmax: [-3.1415926536, 3.1415926536]
+        ymin_ymax: [-3.1415926536, 3.1415926536]
+        zmin_zmax: [-3.1415926536, 3.1415926536]
+        rx_ry_rz: [1., 1., 1.]
+    time:
+        niterations: 4000
+        dt: 0.004 # 0.004 (nx=32) - 0.004 (nx=64) - 0.002 (nx=128)
+        ndump: 250
+        new_simulation: True
+        initial_solution: sol_inst_last.bin
+    scheme:
+        nrk: 4
+        split_form: Divergence # Divergence - Ducros - Blaisdell - Feiereisen - KennedyGruber
+        nscheme: 5
+        nfilter: 5
+        relaxation_coeff: 0.1
+    flow:
+        dimension: adim
+        Mach_number: 0.084515 # P_inf:100
+        gamma: 1.40
+        R_inf: 1.
+        U_inf: 1.
+        T_inf: 1.
+    transport:
+        visclaw_type: power
+        Reynolds_number: 1600.
+        Prandtl_number: 0.723
+    shock:
+        shock_capture: False
+    sponge:
+        compute_sponge: False
+    les:
+        sgs_model: Implicit #Smagorinsky # Implicit - Smagorinsky - MSSM-LS - MSSM-SS - DSM - Cook
+    
+
